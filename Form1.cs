@@ -88,7 +88,8 @@ namespace NCUCalcGearParam
                     cma = PlaceofUseGears.UltraPrecisionClosedType;
                 double N = double.Parse(textBox_NNumber.Text); double Tc = double.Parse(textBox_Tc.Text);
                 double cpm = double.Parse(textBox_cpm.Text); double Kr = double.Parse(textBox_Kr.Text);
-                NCUCalculate.ReadGearPair(Gear1Name, Gear2Name, z1, z2, F1, F2, di1, di2, x1, x2, n, P, Qv1, Qv2, v1, v2, E1, E2, HB1, HB2, mn, alphan, beta, Ka, Ks, cmc, ce, cma, N, Tc, cpm, Kr);
+                double Rq = double.Parse(textBox_Rq.Text);
+                NCUCalculate.ReadGearPair(Gear1Name, Gear2Name, z1, z2, F1, F2, di1, di2, x1, x2, n, P, Qv1, Qv2, v1, v2, E1, E2, HB1, HB2, mn, alphan, beta, Ka, Ks, cmc, ce, cma, N, Tc, cpm, Kr, Rq);
             }
             catch(Exception ex)
             {

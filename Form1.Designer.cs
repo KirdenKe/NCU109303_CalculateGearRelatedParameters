@@ -107,6 +107,8 @@
             this.button_ShowInstructionManual2 = new System.Windows.Forms.Button();
             this.button_ReadSystemFile = new System.Windows.Forms.Button();
             this.button_CreateExampleFiles = new System.Windows.Forms.Button();
+            this.textBox_Rq = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabPage_output.SuspendLayout();
             this.tabPage2_GearPair.SuspendLayout();
@@ -170,6 +172,8 @@
             // tabPage2_GearPair
             // 
             this.tabPage2_GearPair.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2_GearPair.Controls.Add(this.label35);
+            this.tabPage2_GearPair.Controls.Add(this.textBox_Rq);
             this.tabPage2_GearPair.Controls.Add(this.button_ShowInstructionManual1);
             this.tabPage2_GearPair.Controls.Add(this.label33);
             this.tabPage2_GearPair.Controls.Add(this.label32);
@@ -246,7 +250,7 @@
             // 
             // button_ShowInstructionManual1
             // 
-            this.button_ShowInstructionManual1.Location = new System.Drawing.Point(968, 568);
+            this.button_ShowInstructionManual1.Location = new System.Drawing.Point(971, 578);
             this.button_ShowInstructionManual1.Name = "button_ShowInstructionManual1";
             this.button_ShowInstructionManual1.Size = new System.Drawing.Size(193, 91);
             this.button_ShowInstructionManual1.TabIndex = 66;
@@ -304,7 +308,7 @@
             // 
             // button_GearPairCalculate
             // 
-            this.button_GearPairCalculate.Location = new System.Drawing.Point(12, 568);
+            this.button_GearPairCalculate.Location = new System.Drawing.Point(6, 578);
             this.button_GearPairCalculate.Name = "button_GearPairCalculate";
             this.button_GearPairCalculate.Size = new System.Drawing.Size(193, 91);
             this.button_GearPairCalculate.TabIndex = 59;
@@ -864,6 +868,22 @@
             this.button_CreateExampleFiles.UseVisualStyleBackColor = true;
             this.button_CreateExampleFiles.Click += new System.EventHandler(this.button_CreateExampleFiles_Click);
             // 
+            // textBox_Rq
+            // 
+            this.textBox_Rq.Location = new System.Drawing.Point(912, 524);
+            this.textBox_Rq.Name = "textBox_Rq";
+            this.textBox_Rq.Size = new System.Drawing.Size(100, 34);
+            this.textBox_Rq.TabIndex = 67;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(714, 529);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(112, 25);
+            this.label35.TabIndex = 68;
+            this.label35.Text = "齒面粗糙度";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -966,6 +986,8 @@
         private System.Windows.Forms.TextBox textBox_guide;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Button button_ShowInstructionManual2;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.TextBox textBox_Rq;
     }
 }
 

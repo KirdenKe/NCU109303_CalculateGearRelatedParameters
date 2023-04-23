@@ -308,7 +308,7 @@ namespace NCUCalcGearParam
             }
             return value;
         }
-        public static void ReadGearPair(string Gear1Name, string Gear2Name, double z1, double z2, double F1, double F2, double di1, double di2, double x1, double x2, double n, double P, double Qv1, double Qv2, double v1, double v2, double E1, double E2, double HB1, double HB2, double mn, double alphan, double beta, double Ka, double Ks, CourseCorrection cmc, EngagementAxisAmendment ce, PlaceofUseGears cma, double N, double Tc, double cpm, double Kr)
+        public static void ReadGearPair(string Gear1Name, string Gear2Name, double z1, double z2, double F1, double F2, double di1, double di2, double x1, double x2, double n, double P, double Qv1, double Qv2, double v1, double v2, double E1, double E2, double HB1, double HB2, double mn, double alphan, double beta, double Ka, double Ks, CourseCorrection cmc, EngagementAxisAmendment ce, PlaceofUseGears cma, double N, double Tc, double cpm, double Kr, double Rq)
         {
             gear.Clear();
             var gear1 = new DeterminedValue(); var gear2 = new DeterminedValue();
@@ -328,7 +328,7 @@ namespace NCUCalcGearParam
             gear1.cmc = cmc; gear1.ce = ce;
             gear1.cma = cma; gear1.N = N;
             gear1.Tc = Tc; gear1.cpm = cpm;
-            gear1.Kr = Kr;
+            gear1.Kr = Kr; gear1.Rq = Rq;
             gear.Add(gear1); gear.Add(gear2);
             MessageBox.Show(String.Format("資料讀取成功"), "資料讀取完畢", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
