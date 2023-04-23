@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NCUCalculateGearRelatedParameters.Properties
+namespace NCUCalcGearParam.Properties
 {
 
 

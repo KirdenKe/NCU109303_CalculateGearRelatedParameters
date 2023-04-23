@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace NCUCalculateGearRelatedParameters
+namespace NCUCalcGearParam
 {
     internal class DeterminedValue
     {
@@ -308,10 +308,29 @@ namespace NCUCalculateGearRelatedParameters
             }
             return value;
         }
-        public static void ReadGearPair()
+        public static void ReadGearPair(string Gear1Name, string Gear2Name, double z1, double z2, double F1, double F2, double di1, double di2, double x1, double x2, double n, double P, double Qv1, double Qv2, double v1, double v2, double E1, double E2, double HB1, double HB2, double mn, double alphan, double beta, double Ka, double Ks, CourseCorrection cmc, EngagementAxisAmendment ce, PlaceofUseGears cma, double N, double Tc, double cpm, double Kr)
         {
             gear.Clear();
-
+            var gear1 = new DeterminedValue(); var gear2 = new DeterminedValue();
+            gear1.GearName = Gear1Name; gear2.GearName = Gear2Name;
+            gear1.z = z1; gear2.z = z2;
+            gear1.FaceWidth = F1; gear2.FaceWidth = F2;
+            gear1.di = di1; gear2.di = di2;
+            gear1.xn = x1; gear2.xn = x2;
+            gear1.n = n; gear1.P = P;
+            gear1.Qv = Qv1; gear2.Qv = Qv2;
+            gear1.v = v1; gear2.v = v2;
+            gear1.E = E1; gear2.E = E2;
+            gear1.HB = HB1; gear2.HB = HB2;
+            gear1.mn = mn; gear1.alphan = alphan;
+            gear1.beta = beta;
+            gear1.Ka = Ka; gear1.Ks = Ks;
+            gear1.cmc = cmc; gear1.ce = ce;
+            gear1.cma = cma; gear1.N = N;
+            gear1.Tc = Tc; gear1.cpm = cpm;
+            gear1.Kr = Kr;
+            gear.Add(gear1); gear.Add(gear2);
+            MessageBox.Show(String.Format("資料讀取成功"), "資料讀取完畢", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         public static string GeneratecsvFile()
         {
@@ -335,12 +354,19 @@ namespace NCUCalculateGearRelatedParameters
                     index = 0;
                 }
             }
-            using (FileStream fileStream = new FileStream(String.Format("齒輪計算結果.csv"), FileMode.Create, FileAccess.Write))
+            try
             {
-                using (StreamWriter sw = new StreamWriter(fileStream, Encoding.Default))
+                using (FileStream fileStream = new FileStream(String.Format("齒輪計算結果.csv"), FileMode.Create, FileAccess.Write))
                 {
-                    sw.Write(TotalOutputText);
+                    using (StreamWriter sw = new StreamWriter(fileStream, Encoding.Default))
+                    {
+                        sw.Write(TotalOutputText);
+                    }
                 }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(String.Format("【錯誤】\r\n{0}", ex.Message), "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return TotalOutputText;
         }
@@ -391,6 +417,11 @@ namespace NCUCalculateGearRelatedParameters
                 }
             }
             return localReports;
+        }
+        public static string ShowManual()
+        {
+            string manual = String.Format("【說明】\r\n\r\n歡迎使用中央大學自製輕量型齒輪相關參數計算機。本計算機可提供計算一條功率傳輸線上所有嚙合齒輪對的相關參數，其中齒輪對的數量不限，請根據需求使用。\r\n\r\n本計算機提供一個範例檔案，檔案格式為逗號分隔檔案（.csv），請事先安裝Microsoft Excel、Notepad++…等可編輯csv檔案的軟體。\r\n\r\n本計算機提供的範例檔案已內建好可輸入四個齒輪資料的格式與空白數值，若需要增加齒輪的數量，請複製預設「齒輪名字,3」區域的資料，並在預設「齒輪名字,3」區域與預設「齒輪名字,4」區域之間貼上，中間空白可不限。\r\n\r\n請注意！填寫好的檔案必須至少包含四個齒輪資料，每個齒輪資料的數值皆不得為空白或其他文字。除了可以複製預設「齒輪名字,3」區域的資料並於預設「齒輪名字,3」區域與預設「齒輪名字,4」區域之間貼上資料，其餘區域的資料格式皆不得隨意竄改、刪除以及調動位置！\r\n\r\n以下開始介紹如何填寫本計算機提供的範例檔案：\r\n\r\n齒輪名字：可以填寫該齒輪的名字，設計齒輪系統時有良好的命名習慣，對辨別齒輪有很大的幫助。\r\n\r\n齒數：填寫該齒論上齒數。\r\n\r\n法向模數：填寫該齒論對的法向模數，單位為mm。\r\n\r\n壓力角：填寫該齒論對的壓力角，單位為degree。\r\n\r\n螺旋角：填寫該齒論對的螺旋角，單位為degree。\r\n\r\n齒面寬：填寫該齒論的齒面寬，單位為mm。\r\n\r\n齒輪內孔直徑：填寫該齒論的內孔直徑，單位為mm。\r\n\r\n轉位係數：填寫該齒論的轉位係數，單位為mm。\r\n\r\n轉速：填寫該齒論的轉速，單位為rpm。\r\n\r\n功率：填寫該齒論的功率，單位為W。\r\n\r\n負荷係數：填寫該齒論對的負荷係數，填寫負荷係數請參照表1填寫。\r\n\r\n表1：負荷係數表\r\n\r\n| 輸入機器 | 輸出機器 | 輸出機器 | 輸出機器 |\r\n| -------- | -------- | -------- | -------- |\r\n| 輸入機器 | 均力     | 中衝擊   | 重衝擊   |\r\n| 均力     | 1.00     | 1.25     | 1.75     |\r\n| 中衝擊   | 1.25     | 1.5      | 2        |\r\n| 重衝擊   | 1.5      | 1.75     | 2.25     |\r\n\r\n尺寸係數：填寫該齒論對的尺寸係數。一般而言會將尺寸係數設為1，如大模數齒輪，會將尺寸係數設為「1.25」或「1.5」較為安全，請自行判斷。\r\n\r\n是否導程修正：填寫該齒論對是否導程修正，填寫格式為「True」、「False」，大小寫皆可。\r\n\r\n研磨製程：填寫該齒論對是否經過研磨製程，填寫格式為「True」、「False」，大小寫皆可。\r\n\r\n齒輪使用場所選用：填寫該齒論對的使用場所，可以選用開放式齒輪、一般密閉式齒輪、精密密閉式齒輪以及超精密密閉式齒輪，填寫格式為「opentype」、「generalclosedtype」、「precisionclosedtype」以及「ultraprecisionclosedtype」。也可以輸入數字，其對應數字分別為「0」、「1」、「2」以及「3」。\r\n\r\n齒輪嚙合次數：填寫該齒論對的嚙合次數。一般而言會設為「10000000」。\r\n\r\n齒輪AGMA等級：填寫該齒論的AGMA等級。\r\n\r\n潤滑油溫度：填寫該齒輪對使用的潤滑油溫度，也可視為該齒輪對的溫度。\r\n\r\n小齒輪安裝修正因子：填寫該齒輪對的小齒輪安裝修正因子，若小齒輪與大齒輪面寬中心間的距離與齒輪軸兩端軸承的跨距比小於0.175，則設因子為1，若大於0.175則設因子為1.1，請自行判斷。\r\n\r\n可靠度係數：填寫該齒輪對的可靠度係數，填寫可靠度係數請參照表2填寫。\r\n\r\n表2：可靠度係數\r\n\r\n| 可靠度選擇 | 可靠度係數 |\r\n| ---------- | ---------- |\r\n| 90%        | 0.85       |\r\n| 99%        | 1          |\r\n| 99.9%      | 1.25       |\r\n| 99.99%     | 1.5        |\r\n\r\n蒲松比：填寫該齒輪的蒲松比。\r\n\r\n楊氏係數：填寫該齒輪的楊氏係數。\r\n\r\n勃氏硬度：填寫該齒輪的勃氏硬度。\r\n\r\n齒面粗糙度：填寫該齒輪的齒面粗糙度。\r\n\r\n是否與上個齒輪在同一軸上：填寫該齒輪是否與上個齒輪在同一軸上，填寫格式為「True」、「False」，大小寫皆可。\r\n\r\n請注意！若填寫資料為該齒輪對的共同資料的話，本計算機將優先以順序較前的齒輪資料為準！\r\n\r\n若資料填寫完畢，即可讓計算機讀取檔案。請注意！計算機可讀取的檔案僅為逗號分隔檔案（.csv），若非csv檔請透過Microsoft Excel、Notepad++等軟體將檔案轉為csv檔。\r\n\r\n若資料填寫無誤，則會跳出通知說明資料讀取成功。若為失敗，則會跳出通知說明錯誤理由，請再修正檔案使其可被讀取。\r\n\r\n當計算機讀取完齒輪資料後，您可以選擇輸出格式，本計算機提供逗號分隔檔案（.csv）與Markdown語法。如果有做報告的需求，可以利用輸出csv檔，再利用Microsoft Excel轉成Microsoft Excel工作表（.xlsx），以利於整理表格與打報告。若有線上協作的需求，可以利用輸出md語法，計算機會輸出md語法中對應的表格形式，再將文字複製到協作專案裡即可。\r\n\r\n請注意！僅輸出逗號分隔檔案（.csv）時會在同一資料夾內產生新的csv檔，若有同名檔案則會被覆寫，切記輸出完檔案後記得更改舊的檔案名稱！");
+            return manual;
         }
     }
     internal class CalculateArea

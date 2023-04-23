@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // 組件的一般資訊是由下列的屬性集控制。
 // 變更這些屬性的值即可修改組件的相關
 // 資訊。
-[assembly: AssemblyTitle("CalculateGearRelatedParameters")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("中央大學酷派爭霸讚比賽用介面")]
+[assembly: AssemblyDescription("中央大學酷派爭霸讚比賽用介面")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CalculateGearRelatedParameters")]
-[assembly: AssemblyCopyright("Copyright ©  2023")]
+[assembly: AssemblyCompany("NCU")]
+[assembly: AssemblyProduct("NCU Calculate Gear Related Parameters")]
+[assembly: AssemblyCopyright("NCU KirdenKe Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
